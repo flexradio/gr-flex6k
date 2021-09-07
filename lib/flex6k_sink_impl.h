@@ -18,10 +18,10 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_FLEX6000_FLEX6K_SINK_IMPL_H
-#define INCLUDED_FLEX6000_FLEX6K_SINK_IMPL_H
+#ifndef INCLUDED_FLEX6K_FLEX6K_SINK_IMPL_H
+#define INCLUDED_FLEX6K_FLEX6K_SINK_IMPL_H
 
-#include <Flex6000/flex6k_sink.h>
+#include <flex6k/flex6k_sink.h>
 #include "FlexRadio6000.h"
 
 #include <chrono>
@@ -34,7 +34,7 @@
 
 namespace gr
 {
-    namespace Flex6000
+    namespace flex6k
     {
 
         class flex6k_sink_impl : public flex6k_sink
@@ -165,7 +165,7 @@ namespace gr
 
         };
 
-    } // namespace Flex6000
+    } // namespace flex6k
 } // namespace gr
 
-#endif /* INCLUDED_FLEX6000_FLEX6K_SINK_IMPL_H */
+#endif /* INCLUDED_FLEX6K_FLEX6K_SINK_IMPL_H */

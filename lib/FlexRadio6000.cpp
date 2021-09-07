@@ -118,7 +118,7 @@ std::shared_ptr<FlexRadio6000> FlexRadio6000::Connect(const std::string &address
         //no dynamic, check that this is the first item in the map.
         if (s_FlexRadio6000Instances.size() >= 1)
         {
-            std::cerr << "Simultaneous multiple waveforms not supported without dynamic loading the FlexRadio API, recompile gr-Flex6000 with -DUSE_DYNAMIC=True cmake command to enable" << std::endl;
+            std::cerr << "Simultaneous multiple waveforms not supported without dynamic loading the FlexRadio API, recompile gr-flex6k with -DUSE_DYNAMIC=True cmake command to enable" << std::endl;
             assert(0);
         }
 #endif

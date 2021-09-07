@@ -1,10 +1,10 @@
-id: Flex6000_flex_radio_6000_source
-label: flex_radio_6000_source
-category: '[Flex6000]'
+id: flex6k_flex6k_command
+label: flex6k_command
+category: '[flex6k]'
 
 templates:
-  imports: import Flex6000
-  make: Flex6000.flex_radio_6000_source(${waveform_long_name}, ${waveform_short_name}, ${address}, ${swapIQ}, ${sendZerosWhileTX} )
+  imports: import flex6k
+  make: flex6k.flex6k_command(${waveform_long_name}, ${waveform_short_name}, ${address})
 
 #  Make one 'parameters' list entry for every parameter you want settable from the GUI.
 #     Keys include:
@@ -13,29 +13,19 @@ templates:
 #     * dtype (e.g. int, float, complex, byte, short, xxx_vector, ...)
 parameters:
 - id: waveform_long_name
-  label: waveform_long_name
+  label: Waveform long name
   dtype: string
-  default: "LPI Receiver"
-  optional: false
+  default: "GNR Transmitter"
+  # optional: 0
 - id: waveform_short_name
-  label: waveform_short_name
+  label: Waveform short name
   dtype: string
-  default: "LPIR"
-  optional: false
+  default: "GNUT"
+  # optional: 0
 - id: address
   label: IP Address and Port
   dtype: string
   default: "0.0.0.0:32787"
-  optional: true
-- id: swapIQ
-  label: swap I and Q channels
-  dtype: bool
-  default: true
-
-- id: sendZerosWhileTX
-  label: During TX, output 0s. 
-  dtype: bool
-  default: true
 
 #  Make one 'inputs' list entry per input and one 'outputs' list entry per output.
 #  Keys include:
@@ -44,16 +34,17 @@ parameters:
 #      * dtype (e.g. int, float, complex, byte, short, xxx_vector, ...)
 #      * vlen (optional - data stream vector length. Default is 1)
 #      * optional (optional - set to 1 for optional inputs. Default is 0)
+
 inputs:
-# - label: command
-#   domain: message
-#   optional: true
+- label: cmd_in
+  domain: message
+  optional: false
 
 outputs:
-- label: out
-  domain: stream
-  dtype: complex
-  optional: false
+- label: resp_out
+  domain: message
+  optional: 1
+
 
 #  'file_format' specifies the version of the GRC yml format used in the file
 #  and should usually not be changed.

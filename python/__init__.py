@@ -19,15 +19,15 @@
 # The presence of this file turns this directory into a Python package
 
 '''
-This is the GNU Radio FLEX6000 module. Place your Python package
+This is the GNU Radio FLEX6K module. Place your Python package
 description here (python/__init__.py).
 '''
 from __future__ import unicode_literals
 
-# import swig generated symbols into the Flex6000 namespace
+# import swig generated symbols into the flex6k namespace
 try:
     # this might fail if the module is python-only
-    from .Flex6000_swig import *
+    from .flex6k_swig import *
 except ImportError:
     pass
 

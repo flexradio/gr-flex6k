@@ -33,7 +33,7 @@
 
 namespace gr
 {
-  namespace Flex6000
+  namespace flex6k
   {
 
     flex6k_sink::sptr
@@ -366,5 +366,5 @@ namespace gr
                            { return m_intern_writer->space_available() > 0 || m_finished; });
       }
     }
-  } /* namespace Flex6000 */
+  } /* namespace flex6k */
 } /* namespace gr */

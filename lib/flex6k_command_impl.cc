@@ -28,7 +28,7 @@
 
 namespace gr
 {
-  namespace Flex6000
+  namespace flex6k
   {
 
     flex6k_command::sptr
@@ -118,5 +118,5 @@ namespace gr
         m_radio->send_api_command(m_cbBuffer.s_cmd_cb, &m_cbBuffer, str.c_str());
       }
     }
-  } /* namespace Flex6000 */
+  } /* namespace flex6k */
 } /* namespace gr */

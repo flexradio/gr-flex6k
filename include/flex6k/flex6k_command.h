@@ -18,42 +18,38 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_FLEX6000_FLEX6K_CONFIG_H
-#define INCLUDED_FLEX6000_FLEX6K_CONFIG_H
+#ifndef INCLUDED_FLEX6K_FLEX6K_COMMAND_H
+#define INCLUDED_FLEX6K_FLEX6K_COMMAND_H
 
-#include <Flex6000/api.h>
+#include <flex6k/api.h>
 #include <gnuradio/block.h>
 
-namespace gr
-{
-  namespace Flex6000
-  {
+namespace gr {
+  namespace flex6k {
 
     /*!
      * \brief <+description of block+>
-     * \ingroup Flex6000
+     * \ingroup flex6k
      *
      */
-    class FLEX6000_API flex6k_config : virtual public gr::block
+    class FLEX6K_API flex6k_command : virtual public gr::block
     {
-    public:
-      typedef boost::shared_ptr<flex6k_config> sptr;
+     public:
+      typedef boost::shared_ptr<flex6k_command> sptr;
 
       /*!
-       * \brief Return a shared_ptr to a new instance of Flex6000::flex6k_config.
+       * \brief Return a shared_ptr to a new instance of flex6k::flex6k_command.
        *
-       * To avoid accidental use of raw pointers, Flex6000::flex6k_config's
+       * To avoid accidental use of raw pointers, flex6k::flex6k_command's
        * constructor is in a private implementation
-       * class. Flex6000::flex6k_config::make is the public interface for
+       * class. flex6k::flex6k_command::make is the public interface for
        * creating new instances.
        */
-      static sptr make(std::string longName, std::string shortName,
-                       std::string address, int enum_tsMode, int enum_SampRate,
-                       bool autostart, std::string autostart_txAnt,
-                       std::string autostart_rxAnt, double autostart_freq);
+      static sptr make(std::string waveform_long_name, std::string waveform_short_name, std::string address);
     };
 
-  } // namespace Flex6000
+  } // namespace flex6k
 } // namespace gr
 
-#endif /* INCLUDED_FLEX6000_FLEX6K_CONFIG_H */
+#endif /* INCLUDED_FLEX6K_FLEX6K_COMMAND_H */
+

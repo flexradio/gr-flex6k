@@ -1,10 +1,11 @@
-id: Flex6000_flex_radio_6000_command
-label: flex_radio_6000_command
-category: '[Flex6000]'
+id: flex6k_flex6k_configuration
+label: flex6k_configuration
+category: '[flex6k]'
 
 templates:
-  imports: import Flex6000
-  make: Flex6000.flex_radio_6000_command(${waveform_long_name}, ${waveform_short_name}, ${address})
+  imports: import flex6k
+  make: flex6k.flex6k_configuration(${longName}, ${shortName}, ${address}, ${enum_tsMode.value}, ${enum_SampRate.value},
+        ${autostart},${autostart_txAnt},${autostart_rxAnt},${autostart_freq})
 
 #  Make one 'parameters' list entry for every parameter you want settable from the GUI.
 #     Keys include:
@@ -12,12 +13,12 @@ templates:
 #     * label (label shown in the GUI)
 #     * dtype (e.g. int, float, complex, byte, short, xxx_vector, ...)
 parameters:
-- id: waveform_long_name
+- id: longName
   label: Waveform long name
   dtype: string
   default: "GNR Transmitter"
   # optional: 0
-- id: waveform_short_name
+- id: shortName
   label: Waveform short name
   dtype: string
   default: "GNUT"
@@ -27,6 +28,47 @@ parameters:
   dtype: string
   default: "0.0.0.0:32787"
 
+- id: enum_tsMode
+  label: Timestamp Mode
+  dtype: enum
+  default: 'PC'
+  options:  ['PC', 'Radio']
+  option_labels: ['PC', 'Radio']
+  option_attributes:
+    value: [0, 1]
+
+- id: enum_SampRate
+  label: IQ Data Sample Rate
+  dtype: enum
+  default: '24000'
+  options:  ['24000']
+  option_labels: ['24000']
+  option_attributes:
+    value: [0]
+
+- id: autostart
+  label: autostart
+  dtype: bool
+  default: 'False'
+  options: ['True', 'False']
+  option_labels: ['True', 'False']
+
+- id: autostart_txAnt
+  label: autostart_txAnt ("" is dont set)
+  dtype: string
+  default: "XVTA"
+
+- id: autostart_rxAnt
+  label: autostart_rxAnt ("" is dont set)
+  dtype: string
+  default: "RX_A"
+
+
+- id: autostart_freq
+  label: autostart_freq (0 is dont set)
+  dtype: float
+  default: 10
+
 #  Make one 'inputs' list entry per input and one 'outputs' list entry per output.
 #  Keys include:
 #      * label (an identifier for the GUI)
@@ -34,17 +76,6 @@ parameters:
 #      * dtype (e.g. int, float, complex, byte, short, xxx_vector, ...)
 #      * vlen (optional - data stream vector length. Default is 1)
 #      * optional (optional - set to 1 for optional inputs. Default is 0)
-
-inputs:
-- label: cmd_in
-  domain: message
-  optional: false
-
-outputs:
-- label: resp_out
-  domain: message
-  optional: 1
-
 
 #  'file_format' specifies the version of the GRC yml format used in the file
 #  and should usually not be changed.

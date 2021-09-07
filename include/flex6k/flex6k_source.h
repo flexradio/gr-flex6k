@@ -18,31 +18,31 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_FLEX6000_FLEX6K_SOURCE_H
-#define INCLUDED_FLEX6000_FLEX6K_SOURCE_H
+#ifndef INCLUDED_FLEX6K_FLEX6K_SOURCE_H
+#define INCLUDED_FLEX6K_FLEX6K_SOURCE_H
 
-#include <Flex6000/api.h>
+#include <flex6k/api.h>
 #include <gnuradio/sync_block.h>
 
 namespace gr {
-  namespace Flex6000 {
+  namespace flex6k {
 
     /*!
      * \brief <+description of block+>
-     * \ingroup Flex6000
+     * \ingroup flex6k
      *
      */
-    class FLEX6000_API flex6k_source : virtual public gr::block
+    class FLEX6K_API flex6k_source : virtual public gr::block
     {
      public:
       typedef boost::shared_ptr<flex6k_source> sptr;
 
       /*!
-       * \brief Return a shared_ptr to a new instance of Flex6000::flex6k_source.
+       * \brief Return a shared_ptr to a new instance of flex6k::flex6k_source.
        *
-       * To avoid accidental use of raw pointers, Flex6000::flex6k_source's
+       * To avoid accidental use of raw pointers, flex6k::flex6k_source's
        * constructor is in a private implementation
-       * class. Flex6000::flex6k_source::make is the public interface for
+       * class. flex6k::flex6k_source::make is the public interface for
        * creating new instances.
        */
       static sptr make(std::string waveform_long_name,
@@ -52,8 +52,8 @@ namespace gr {
                                         bool sendZerosWhileTX);
     };
 
-  } // namespace Flex6000
+  } // namespace flex6k
 } // namespace gr
 
-#endif /* INCLUDED_FLEX6000_FLEX6K_SOURCE_H */
+#endif /* INCLUDED_FLEX6K_FLEX6K_SOURCE_H */
 

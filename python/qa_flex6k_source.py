@@ -21,7 +21,7 @@
 
 from gnuradio import gr, gr_unittest
 from gnuradio import blocks
-import Flex6000_swig as Flex6000
+import flex6k_swig as flex6k
 
 class qa_flex6k_source(gr_unittest.TestCase):
 

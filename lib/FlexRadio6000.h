@@ -18,8 +18,8 @@
  * 
  **************************************************************************/
 
-#ifndef GR_FLEX6000_FLEXRADIO6000_H
-#define GR_FLEX6000_FLEXRADIO6000_H
+#ifndef GR_FLEX6K_FLEXRADIO6000_H
+#define GR_FLEX6K_FLEXRADIO6000_H
 
 #include <mutex>
 #include <condition_variable>
@@ -385,4 +385,4 @@ private:
     uint64_t m_nsStartOffest;
 };
 
-#endif //GR_FLEX6000_FLEXRADIO6000_H
+#endif //GR_FLEX6K_FLEXRADIO6000_H

@@ -30,7 +30,7 @@
 
 namespace gr
 {
-    namespace Flex6000
+    namespace flex6k
     {
 
         flex6k_source::sptr
@@ -328,5 +328,5 @@ namespace gr
             }
         }
 
-    } /* namespace Flex6000 */
+    } /* namespace flex6k */
 } /* namespace gr */
