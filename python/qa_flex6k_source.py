@@ -23,7 +23,7 @@ from gnuradio import gr, gr_unittest
 from gnuradio import blocks
 import Flex6000_swig as Flex6000
 
-class qa_flex_radio_6000_source(gr_unittest.TestCase):
+class qa_flex6k_source(gr_unittest.TestCase):
 
     def setUp(self):
         self.tb = gr.top_block()
@@ -38,4 +38,4 @@ class qa_flex_radio_6000_source(gr_unittest.TestCase):
 
 
 if __name__ == '__main__':
-    gr_unittest.run(qa_flex_radio_6000_source)
+    gr_unittest.run(qa_flex6k_source)

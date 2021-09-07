@@ -23,8 +23,8 @@
 ########################################################################
 install(FILES
     api.h
-    flex_radio_6000_sink.h
-    flex_radio_6000_source.h
-    flex_radio_6000_command.h
-    flex_radio_6000_configuration.h DESTINATION include/Flex6000
+    flex6k_sink.h
+    flex6k_source.h
+    flex6k_command.h
+    flex6k_config.h DESTINATION include/Flex6000
 )

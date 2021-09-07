@@ -18,9 +18,9 @@
 # the Free Software Foundation, Inc., 51 Franklin Street,
 # Boston, MA 02110-1301, USA.
 install(FILES
-    Flex6000_flex_radio_6000_sink.block.yml
-    Flex6000_flex_radio_6000_source.block.yml
-    Flex6000_flex_radio_6000_command.block.yml
-    Flex6000_flex_radio_6000_configuration.block.yml 
+    Flex6000_flex6k_sink.block.yml
+    Flex6000_flex6k_source.block.yml
+    Flex6000_flex6k_command.block.yml
+    Flex6000_flex6k_config.block.yml 
     DESTINATION share/gnuradio/grc/blocks
 )

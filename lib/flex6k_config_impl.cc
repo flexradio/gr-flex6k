@@ -23,27 +23,27 @@
 #endif
 
 #include <gnuradio/io_signature.h>
-#include "flex_radio_6000_configuration_impl.h"
+#include "flex6k_config_impl.h"
 
 namespace gr
 {
   namespace Flex6000
   {
 
-    flex_radio_6000_configuration::sptr
-    flex_radio_6000_configuration::make(std::string longName, std::string shortName, std::string address, int enum_tsMode, int enum_SampRate, bool autostart,
+    flex6k_config::sptr
+    flex6k_config::make(std::string longName, std::string shortName, std::string address, int enum_tsMode, int enum_SampRate, bool autostart,
                                         std::string autostart_txAnt,
                                         std::string autostart_rxAnt,
                                         double autostart_freq)
     {
-      return gnuradio::get_initial_sptr(new flex_radio_6000_configuration_impl(longName, shortName, address, enum_tsMode, enum_SampRate, autostart, autostart_txAnt, autostart_rxAnt,
+      return gnuradio::get_initial_sptr(new flex6k_config_impl(longName, shortName, address, enum_tsMode, enum_SampRate, autostart, autostart_txAnt, autostart_rxAnt,
                                                                                autostart_freq));
     }
 
     /*
      * The private constructor
      */
-    flex_radio_6000_configuration_impl::flex_radio_6000_configuration_impl(
+    flex6k_config_impl::flex6k_config_impl(
         std::string longName, std::string shortName,
         std::string address, int enum_tsMode,
         int enum_SampRate,
@@ -51,7 +51,7 @@ namespace gr
         std::string autostart_txAnt,
         std::string autostart_rxAnt,
         double autostart_freq)
-        : gr::block("flex_radio_6000_configuration",
+        : gr::block("flex6k_config",
                     gr::io_signature::make(0, 0, 0),
                     gr::io_signature::make(0, 0, 0))
     {
@@ -73,7 +73,7 @@ namespace gr
     /*
      * Our virtual destructor.
      */
-    flex_radio_6000_configuration_impl::~flex_radio_6000_configuration_impl()
+    flex6k_config_impl::~flex6k_config_impl()
     {
     }
 

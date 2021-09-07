@@ -18,8 +18,8 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_FLEX6000_FLEX_RADIO_6000_SINK_H
-#define INCLUDED_FLEX6000_FLEX_RADIO_6000_SINK_H
+#ifndef INCLUDED_FLEX6000_FLEX6K_SINK_H
+#define INCLUDED_FLEX6000_FLEX6K_SINK_H
 
 #include <Flex6000/api.h>
 #include <gnuradio/sync_block.h>
@@ -34,17 +34,17 @@ namespace gr
      * \ingroup Flex6000
      *
      */
-    class FLEX6000_API flex_radio_6000_sink : virtual public gr::block
+    class FLEX6000_API flex6k_sink : virtual public gr::block
     {
     public:
-      typedef boost::shared_ptr<flex_radio_6000_sink> sptr;
+      typedef boost::shared_ptr<flex6k_sink> sptr;
 
       /*!
-       * \brief Return a shared_ptr to a new instance of Flex6000::flex_radio_6000_sink.
+       * \brief Return a shared_ptr to a new instance of Flex6000::flex6k_sink.
        *
-       * To avoid accidental use of raw pointers, Flex6000::flex_radio_6000_sink's
+       * To avoid accidental use of raw pointers, Flex6000::flex6k_sink's
        * constructor is in a private implementation
-       * class. Flex6000::flex_radio_6000_sink::make is the public interface for
+       * class. Flex6000::flex6k_sink::make is the public interface for
        * creating new instances.
        * 
        * \param txMode
@@ -90,4 +90,4 @@ namespace gr
   } // namespace Flex6000
 } // namespace gr
 
-#endif /* INCLUDED_FLEX6000_FLEX_RADIO_6000_SINK_H */
+#endif /* INCLUDED_FLEX6000_FLEX6K_SINK_H */

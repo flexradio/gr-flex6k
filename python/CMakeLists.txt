@@ -42,5 +42,5 @@ include(GrTest)
 
 set(GR_TEST_TARGET_DEPS gnuradio-Flex6000)
 set(GR_TEST_PYTHON_DIRS ${CMAKE_BINARY_DIR}/swig)
-GR_ADD_TEST(qa_flex_radio_6000_sink ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_flex_radio_6000_sink.py)
-GR_ADD_TEST(qa_flex_radio_6000_source ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_flex_radio_6000_source.py)
+GR_ADD_TEST(qa_flex6k_sink ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_flex6k_sink.py)
+GR_ADD_TEST(qa_flex6k_source ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_flex6k_source.py)

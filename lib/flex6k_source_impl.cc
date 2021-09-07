@@ -26,21 +26,21 @@
 
 #include <utility>
 
-#include "flex_radio_6000_source_impl.h"
+#include "flex6k_source_impl.h"
 
 namespace gr
 {
     namespace Flex6000
     {
 
-        flex_radio_6000_source::sptr
-        flex_radio_6000_source::make(std::string waveform_long_name,
+        flex6k_source::sptr
+        flex6k_source::make(std::string waveform_long_name,
                                      std::string waveform_short_name,
                                      std::string address,
                                      bool swapIQ,
                                      bool sendZerosWhileTX)
         {
-            return gnuradio::get_initial_sptr(new flex_radio_6000_source_impl(waveform_long_name,
+            return gnuradio::get_initial_sptr(new flex6k_source_impl(waveform_long_name,
                                                                               waveform_short_name,
                                                                               address,
                                                                               swapIQ,
@@ -54,12 +54,12 @@ namespace gr
         /*
          * The private constructor
          */
-        flex_radio_6000_source_impl::flex_radio_6000_source_impl(std::string waveform_long_name,
+        flex6k_source_impl::flex6k_source_impl(std::string waveform_long_name,
                                                                  std::string waveform_short_name,
                                                                  std::string address,
                                                                  bool swapIQ,
                                                                  bool sendZerosWhileTX)
-            : gr::block("flex_radio_6000_source",
+            : gr::block("flex6k_source",
                         gr::io_signature::make(0, 0, 0),
                         gr::io_signature::make(1, 1, sizeof(std::complex<float>))),
               m_waveform_long_name(waveform_long_name),
@@ -91,11 +91,11 @@ namespace gr
         /*
          * Our virtual destructor.
          */
-        flex_radio_6000_source_impl::~flex_radio_6000_source_impl()
+        flex6k_source_impl::~flex6k_source_impl()
         {
         }
 
-        bool flex_radio_6000_source_impl::start()
+        bool flex6k_source_impl::start()
         {
             //   m_finished = false;
 
@@ -109,7 +109,7 @@ namespace gr
             return true;
         }
 
-        bool flex_radio_6000_source_impl::stop()
+        bool flex6k_source_impl::stop()
         {
             GR_LOG_INFO(d_logger, "FlexRadio6000 Source Interface Block Stopping");
             m_radio->deregister_pacingRX_cb(s_pacingCallback, this);
@@ -118,7 +118,7 @@ namespace gr
             return true;
         }
 
-        void flex_radio_6000_source_impl::stateChangeCallback(FlexRadio6000::waveform_state state)
+        void flex6k_source_impl::stateChangeCallback(FlexRadio6000::waveform_state state)
         {
             std::lock_guard<std::mutex> lock(m_stateMutex);
             m_state.m_state_prev = m_state.m_state_curr;
@@ -157,7 +157,7 @@ namespace gr
         }
 
         int
-        flex_radio_6000_source_impl::general_work(int noutput_items,
+        flex6k_source_impl::general_work(int noutput_items,
                                                   gr_vector_int &ninput_items,
                                                   gr_vector_const_void_star &input_items,
                                                   gr_vector_void_star &output_items)
@@ -199,7 +199,7 @@ namespace gr
             return itemsToPush;
         }
 
-        void flex_radio_6000_source_impl::waitForData()
+        void flex6k_source_impl::waitForData()
         {
             std::unique_lock<std::mutex> lock(m_bufLock);
 
@@ -210,7 +210,7 @@ namespace gr
             }
         }
 
-        // void flex_radio_6000_source_impl::waitForPacingCB()
+        // void flex6k_source_impl::waitForPacingCB()
         // {
         //     std::unique_lock<std::mutex> lock(m_pacingMutex);
 
@@ -221,7 +221,7 @@ namespace gr
         //     }
         // }
 
-        void flex_radio_6000_source_impl::pacingCallback(std::chrono::nanoseconds ts,
+        void flex6k_source_impl::pacingCallback(std::chrono::nanoseconds ts,
                                                 FlexRadio6000::paceMode mode, int numSamples,
                                                 float *packet)
         {

@@ -38,14 +38,14 @@ endif(USE_DYNAMIC)
 
 include(GrPlatform) #define LIB_SUFFIX
 list(APPEND Flex6000_sources
-    flex_radio_6000_sink_impl.cc
-    flex_radio_6000_source_impl.cc
+    flex6k_sink_impl.cc
+    flex6k_source_impl.cc
     FlexRadio6000.cpp
     ${FLEX_LIB_INTERFACE}
-    flex_radio_6000_command_impl.cc 
+    flex6k_command_impl.cc 
     flex_buffers.cc
     flex_status_tree.cc
-    flex_radio_6000_configuration_impl.cc )
+    flex6k_config_impl.cc )
 
 set(Flex6000_sources "${Flex6000_sources}" PARENT_SCOPE )
 if(NOT Flex6000_sources)

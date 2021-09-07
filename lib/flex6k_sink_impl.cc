@@ -24,7 +24,7 @@
 
 #include <gnuradio/io_signature.h>
 
-#include "flex_radio_6000_sink_impl.h"
+#include "flex6k_sink_impl.h"
 #include <atomic>
 #include <chrono>
 #include <boost/lexical_cast.hpp>
@@ -36,13 +36,13 @@ namespace gr
   namespace Flex6000
   {
 
-    flex_radio_6000_sink::sptr
-    flex_radio_6000_sink::make(std::string waveform_long_name,
+    flex6k_sink::sptr
+    flex6k_sink::make(std::string waveform_long_name,
                                std::string waveform_short_name,
                                std::string address,
                                int txMode)
     {
-      return gnuradio::get_initial_sptr(new flex_radio_6000_sink_impl(waveform_long_name,
+      return gnuradio::get_initial_sptr(new flex6k_sink_impl(waveform_long_name,
                                                                       waveform_short_name,
                                                                       address,
                                                                       txMode));
@@ -51,11 +51,11 @@ namespace gr
     /*
      * The private constructor
      */
-    flex_radio_6000_sink_impl::flex_radio_6000_sink_impl(std::string waveform_long_name,
+    flex6k_sink_impl::flex6k_sink_impl(std::string waveform_long_name,
                                                          std::string waveform_short_name,
                                                          std::string address,
                                                          int txMode)
-        : gr::block("flex_radio_6000_sink",
+        : gr::block("flex6k_sink",
                     gr::io_signature::make(1, 1, sizeof(std::complex<float>)),
                     gr::io_signature::make(0, 0, 0)),
           m_waveform_long_name(waveform_long_name),
@@ -95,13 +95,13 @@ namespace gr
     /*
      * Our virtual destructor.
      */
-    flex_radio_6000_sink_impl::~flex_radio_6000_sink_impl()
+    flex6k_sink_impl::~flex6k_sink_impl()
     {
       //not sure what is needed to do... maybe nothing...
     }
 
     int
-    flex_radio_6000_sink_impl::general_work(int noutput_items,
+    flex6k_sink_impl::general_work(int noutput_items,
                                             gr_vector_int &ninput_items,
                                             gr_vector_const_void_star &input_items,
                                             gr_vector_void_star &output_items)
@@ -168,7 +168,7 @@ namespace gr
       return 0;
     }
 
-    void flex_radio_6000_sink_impl::tx_monitor()
+    void flex6k_sink_impl::tx_monitor()
     {
       while (true && m_finished == false)
       {
@@ -192,7 +192,7 @@ namespace gr
       }
     }
 
-    void flex_radio_6000_sink_impl::waitForDataState()
+    void flex6k_sink_impl::waitForDataState()
     {
       std::unique_lock<std::mutex> lock(m_ctrlMutex);
 
@@ -203,7 +203,7 @@ namespace gr
       }
     }
 
-    bool flex_radio_6000_sink_impl::start()
+    bool flex6k_sink_impl::start()
     {
       m_finished = false;
       m_radio->m_lockMap.get_lock("initLock")->waitOnStateLck();
@@ -214,7 +214,7 @@ namespace gr
       return true;
     }
 
-    bool flex_radio_6000_sink_impl::stop()
+    bool flex6k_sink_impl::stop()
     {
       GR_LOG_INFO(d_logger, "FlexRadio6000 Sink Interface Block stopping");
       m_finished = true;
@@ -234,7 +234,7 @@ namespace gr
       return true;
     }
 
-    void flex_radio_6000_sink_impl::stateChangeCallback(FlexRadio6000::waveform_state state)
+    void flex6k_sink_impl::stateChangeCallback(FlexRadio6000::waveform_state state)
     {
       std::lock_guard<std::mutex> lock(m_stateMutex);
       m_state.m_state_prev = m_state.m_state_prev;
@@ -296,7 +296,7 @@ namespace gr
     //   }
     // }
 
-    void flex_radio_6000_sink_impl::pacingCallback(std::chrono::nanoseconds ts, FlexRadio6000::paceMode mode, int numSamples)
+    void flex6k_sink_impl::pacingCallback(std::chrono::nanoseconds ts, FlexRadio6000::paceMode mode, int numSamples)
     {
       int itemsAvail = m_intern_reader->items_available();
       int numComplexSamples = (numSamples) / 2;
@@ -356,7 +356,7 @@ namespace gr
       m_lastMode = mode;
     }
 
-    void flex_radio_6000_sink_impl::waitForBufferSpace()
+    void flex6k_sink_impl::waitForBufferSpace()
     {
       std::unique_lock<std::mutex> lock(m_bufLock);
 

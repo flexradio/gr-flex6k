@@ -18,10 +18,10 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_FLEX6000_FLEX_RADIO_6000_COMMAND_IMPL_H
-#define INCLUDED_FLEX6000_FLEX_RADIO_6000_COMMAND_IMPL_H
+#ifndef INCLUDED_FLEX6000_FLEX6K_COMMAND_IMPL_H
+#define INCLUDED_FLEX6000_FLEX6K_COMMAND_IMPL_H
 
-#include <Flex6000/flex_radio_6000_command.h>
+#include <Flex6000/flex6k_command.h>
 #include "flex_buffers.h"
 #include "FlexRadio6000.h"
 #include <array>
@@ -31,7 +31,7 @@ namespace gr
   namespace Flex6000
   {
 
-    class flex_radio_6000_command_impl : public flex_radio_6000_command
+    class flex6k_command_impl : public flex6k_command
     {
     private:
       // Nothing to declare in this block.
@@ -47,8 +47,8 @@ namespace gr
       std::thread * m_thread;
 
     public:
-      flex_radio_6000_command_impl(std::string waveform_long_name, std::string waveform_short_name, std::string address);
-      ~flex_radio_6000_command_impl();
+      flex6k_command_impl(std::string waveform_long_name, std::string waveform_short_name, std::string address);
+      ~flex6k_command_impl();
 
       // Where all the action really happens
       // void forecast(int noutput_items, gr_vector_int &ninput_items_required);
@@ -69,4 +69,4 @@ namespace gr
   } // namespace Flex6000
 } // namespace gr
 
-#endif /* INCLUDED_FLEX6000_FLEX_RADIO_6000_COMMAND_IMPL_H */
+#endif /* INCLUDED_FLEX6000_FLEX6K_COMMAND_IMPL_H */

@@ -18,11 +18,11 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_FLEX6000_FLEX_RADIO_6000_COMMAND_H
-#define INCLUDED_FLEX6000_FLEX_RADIO_6000_COMMAND_H
+#ifndef INCLUDED_FLEX6000_FLEX6K_SOURCE_H
+#define INCLUDED_FLEX6000_FLEX6K_SOURCE_H
 
 #include <Flex6000/api.h>
-#include <gnuradio/block.h>
+#include <gnuradio/sync_block.h>
 
 namespace gr {
   namespace Flex6000 {
@@ -32,24 +32,28 @@ namespace gr {
      * \ingroup Flex6000
      *
      */
-    class FLEX6000_API flex_radio_6000_command : virtual public gr::block
+    class FLEX6000_API flex6k_source : virtual public gr::block
     {
      public:
-      typedef boost::shared_ptr<flex_radio_6000_command> sptr;
+      typedef boost::shared_ptr<flex6k_source> sptr;
 
       /*!
-       * \brief Return a shared_ptr to a new instance of Flex6000::flex_radio_6000_command.
+       * \brief Return a shared_ptr to a new instance of Flex6000::flex6k_source.
        *
-       * To avoid accidental use of raw pointers, Flex6000::flex_radio_6000_command's
+       * To avoid accidental use of raw pointers, Flex6000::flex6k_source's
        * constructor is in a private implementation
-       * class. Flex6000::flex_radio_6000_command::make is the public interface for
+       * class. Flex6000::flex6k_source::make is the public interface for
        * creating new instances.
        */
-      static sptr make(std::string waveform_long_name, std::string waveform_short_name, std::string address);
+      static sptr make(std::string waveform_long_name,
+                       std::string waveform_short_name,
+                       std::string address,
+                       bool swapIQ,
+                                        bool sendZerosWhileTX);
     };
 
   } // namespace Flex6000
 } // namespace gr
 
-#endif /* INCLUDED_FLEX6000_FLEX_RADIO_6000_COMMAND_H */
+#endif /* INCLUDED_FLEX6000_FLEX6K_SOURCE_H */
 

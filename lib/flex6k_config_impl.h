@@ -18,17 +18,17 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_FLEX6000_FLEX_RADIO_6000_CONFIGURATION_IMPL_H
-#define INCLUDED_FLEX6000_FLEX_RADIO_6000_CONFIGURATION_IMPL_H
+#ifndef INCLUDED_FLEX6000_FLEX6K_CONFIG_IMPL_H
+#define INCLUDED_FLEX6000_FLEX6K_CONFIG_IMPL_H
 
-#include <Flex6000/flex_radio_6000_configuration.h>
+#include <Flex6000/flex6k_config.h>
 #include "FlexRadio6000.h"
 namespace gr
 {
   namespace Flex6000
   {
 
-    class flex_radio_6000_configuration_impl : public flex_radio_6000_configuration
+    class flex6k_config_impl : public flex6k_config
     {
     private:
       // Nothing to declare in this block.
@@ -37,14 +37,14 @@ namespace gr
       FlexRadio6000::config m_config;
 
     public:
-      flex_radio_6000_configuration_impl(std::string longName, std::string shortName,
+      flex6k_config_impl(std::string longName, std::string shortName,
                                          std::string address, int enum_tsMode, int enum_SampRate,
                                          bool autostart, std::string autostart_txAnt,
                                          std::string autostart_rxAnt, double autostart_freq);
-      ~flex_radio_6000_configuration_impl();
+      ~flex6k_config_impl();
     };
 
   } // namespace Flex6000
 } // namespace gr
 
-#endif /* INCLUDED_FLEX6000_FLEX_RADIO_6000_CONFIGURATION_IMPL_H */
+#endif /* INCLUDED_FLEX6000_FLEX6K_CONFIG_IMPL_H */

@@ -18,10 +18,10 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_FLEX6000_FLEX_RADIO_6000_SOURCE_IMPL_H
-#define INCLUDED_FLEX6000_FLEX_RADIO_6000_SOURCE_IMPL_H
+#ifndef INCLUDED_FLEX6000_FLEX6K_SOURCE_IMPL_H
+#define INCLUDED_FLEX6000_FLEX6K_SOURCE_IMPL_H
 
-#include <Flex6000/flex_radio_6000_source.h>
+#include <Flex6000/flex6k_source.h>
 #include "FlexRadio6000.h"
 
 #include <chrono>
@@ -37,15 +37,15 @@ namespace gr
     namespace Flex6000
     {
 
-        class flex_radio_6000_source_impl : public flex_radio_6000_source //, FlexRadio6000::Waveform::Listener
+        class flex6k_source_impl : public flex6k_source //, FlexRadio6000::Waveform::Listener
         {
         public:
-            flex_radio_6000_source_impl(std::string waveform_long_name,
+            flex6k_source_impl(std::string waveform_long_name,
                                         std::string waveform_short_name,
                                         std::string address,
                                         bool swapIQ,
                                         bool sendZerosWhileTX);
-            ~flex_radio_6000_source_impl();
+            ~flex6k_source_impl();
 
             // void next_vita49_packet(waveform_vita_packet* packet, size_t packet_size) override;
 
@@ -56,7 +56,7 @@ namespace gr
             static inline void s_stateChangeCallback(FlexRadio6000::waveform_t *waveform,
                                                      FlexRadio6000::waveform_state state, void *arg)
             {
-                auto ctx = (flex_radio_6000_source_impl *)arg;
+                auto ctx = (flex6k_source_impl *)arg;
                 ctx->stateChangeCallback(state);
             }
             void stateChangeCallback(FlexRadio6000::waveform_state state);
@@ -65,7 +65,7 @@ namespace gr
                                                 FlexRadio6000::paceMode mode, int numSamples,
                                                 float *packet, void *arg)
             {
-                auto ctx = (flex_radio_6000_source_impl *)arg;
+                auto ctx = (flex6k_source_impl *)arg;
                 ctx->pacingCallback(ts,mode,numSamples,packet);
                 // ctx->m_pacingData_callback.mode = mode;
                 // ctx->m_pacingData_callback.ts = ts;
@@ -159,4 +159,4 @@ namespace gr
     } // namespace Flex6000
 } // namespace gr
 
-#endif /* INCLUDED_FLEX6000_FLEX_RADIO_6000_SOURCE_IMPL_H */
+#endif /* INCLUDED_FLEX6000_FLEX6K_SOURCE_IMPL_H */

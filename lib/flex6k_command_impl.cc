@@ -23,7 +23,7 @@
 #endif
 
 #include <gnuradio/io_signature.h>
-#include "flex_radio_6000_command_impl.h"
+#include "flex6k_command_impl.h"
 #include <boost/algorithm/string.hpp>
 
 namespace gr
@@ -31,19 +31,19 @@ namespace gr
   namespace Flex6000
   {
 
-    flex_radio_6000_command::sptr
-    flex_radio_6000_command::make(std::string waveform_long_name, std::string waveform_short_name, std::string address)
+    flex6k_command::sptr
+    flex6k_command::make(std::string waveform_long_name, std::string waveform_short_name, std::string address)
     {
-      return gnuradio::get_initial_sptr(new flex_radio_6000_command_impl(waveform_long_name, waveform_short_name, address));
+      return gnuradio::get_initial_sptr(new flex6k_command_impl(waveform_long_name, waveform_short_name, address));
     }
 
     /*
      * The private constructor
      */
-    flex_radio_6000_command_impl::flex_radio_6000_command_impl(std::string waveform_long_name,
+    flex6k_command_impl::flex6k_command_impl(std::string waveform_long_name,
                                                                std::string waveform_short_name,
                                                                std::string address)
-        : gr::block("flex_radio_6000_command",
+        : gr::block("flex6k_command",
                     gr::io_signature::make(0, 0, 0),
                     gr::io_signature::make(0, 0, 0)),
           m_cbBuffer(1000)
@@ -56,7 +56,7 @@ namespace gr
       this->message_port_register_in(pmt::mp("cmd_in"));
       this->set_msg_handler(
           pmt::mp("cmd_in"),
-          boost::bind(&flex_radio_6000_command_impl::msg_handler, this, _1));
+          boost::bind(&flex6k_command_impl::msg_handler, this, _1));
 
       message_port_register_out(pmt::mp("resp_out"));
     }
@@ -64,11 +64,11 @@ namespace gr
     /*
      * Our virtual destructor.
      */
-    flex_radio_6000_command_impl::~flex_radio_6000_command_impl()
+    flex6k_command_impl::~flex6k_command_impl()
     {
     }
 
-    bool flex_radio_6000_command_impl::start()
+    bool flex6k_command_impl::start()
     {
       m_thread = new std::thread([this]
                                  { bufferReadLoop(); });
@@ -77,7 +77,7 @@ namespace gr
       return true;
     }
 
-    bool flex_radio_6000_command_impl::stop()
+    bool flex6k_command_impl::stop()
     {
       m_cbBuffer.m_buffer.finish();
       m_thread->join();
@@ -86,7 +86,7 @@ namespace gr
     }
 
     void
-    flex_radio_6000_command_impl::bufferReadLoop()
+    flex6k_command_impl::bufferReadLoop()
     {
       while (true)
       {
@@ -105,7 +105,7 @@ namespace gr
     }
 
     void
-    flex_radio_6000_command_impl::msg_handler(pmt::pmt_t msg)
+    flex6k_command_impl::msg_handler(pmt::pmt_t msg)
     {
       std::string str = pmt::symbol_to_string(msg);
       if (boost::algorithm::starts_with(str, "local"))

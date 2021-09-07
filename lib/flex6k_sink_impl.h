@@ -18,10 +18,10 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifndef INCLUDED_FLEX6000_FLEX_RADIO_6000_SINK_IMPL_H
-#define INCLUDED_FLEX6000_FLEX_RADIO_6000_SINK_IMPL_H
+#ifndef INCLUDED_FLEX6000_FLEX6K_SINK_IMPL_H
+#define INCLUDED_FLEX6000_FLEX6K_SINK_IMPL_H
 
-#include <Flex6000/flex_radio_6000_sink.h>
+#include <Flex6000/flex6k_sink.h>
 #include "FlexRadio6000.h"
 
 #include <chrono>
@@ -37,7 +37,7 @@ namespace gr
     namespace Flex6000
     {
 
-        class flex_radio_6000_sink_impl : public flex_radio_6000_sink
+        class flex6k_sink_impl : public flex6k_sink
         {
         private:
             std::shared_ptr<FlexRadio6000> m_radio;
@@ -126,11 +126,11 @@ namespace gr
             void waitForPacingCB();
             
         public:
-            flex_radio_6000_sink_impl(std::string waveform_long_name,
+            flex6k_sink_impl(std::string waveform_long_name,
                                       std::string waveform_short_name,
                                       std::string address,
                                       int txMode);
-            ~flex_radio_6000_sink_impl();
+            ~flex6k_sink_impl();
 
             bool start();
             bool stop();
@@ -138,7 +138,7 @@ namespace gr
             static inline void s_stateChangeCallback(FlexRadio6000::waveform_t *waveform,
                                                      FlexRadio6000::waveform_state state, void *arg)
             {
-                auto ctx = (flex_radio_6000_sink_impl *)arg;
+                auto ctx = (flex6k_sink_impl *)arg;
 
                 ctx->stateChangeCallback(state);
             }
@@ -147,7 +147,7 @@ namespace gr
             static inline void s_pacingCallback(std::chrono::nanoseconds ts, 
                                         FlexRadio6000::paceMode mode, int numSamples, void *arg)
             {
-                auto ctx = (flex_radio_6000_sink_impl *)arg;
+                auto ctx = (flex6k_sink_impl *)arg;
                 // ctx->m_pacingCondVar.notify_all();
                 ctx->pacingCallback(ts, mode, numSamples);// do noy call directly, copy data needed to a buffer, then awaken the thread.
 
@@ -168,4 +168,4 @@ namespace gr
     } // namespace Flex6000
 } // namespace gr
 
-#endif /* INCLUDED_FLEX6000_FLEX_RADIO_6000_SINK_IMPL_H */
+#endif /* INCLUDED_FLEX6000_FLEX6K_SINK_IMPL_H */
