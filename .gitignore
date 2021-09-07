@@ -41,3 +41,4 @@ debian/files
 debian/*.debhelper
 debian/*.substvars
 debian/gr-flex6k
+.idea/
