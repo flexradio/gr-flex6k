@@ -31,6 +31,7 @@
 #include <algorithm>
 // #include <unistd.h>
 #include <arpa/inet.h>
+#include <netinet/in.h>
 #include <boost/algorithm/string.hpp>
 #include <boost/algorithm/string/split.hpp>
 #include <boost/algorithm/string/classification.hpp>
@@ -138,24 +139,19 @@ std::shared_ptr<FlexRadio6000> FlexRadio6000::Connect(const std::string &address
         //auto addr = waveform_discover_radio(&timeout);
         struct sockaddr_in addr;
         addr.sin_family = AF_INET;
-        addr.sin_port = 32787;
+        addr.sin_port = htons(4992);
 
         if (parts.size() == 2)
         {
-            addr.sin_port = atoi(parts[1].c_str());
+            addr.sin_port = htons(atoi(parts[1].c_str()));
         }
 
-        std::cout << "Connecting to " << parts[0] << " port " << addr.sin_port << std::endl;
+        std::cout << "Connecting to " << parts[0] << " port " << ntohs(addr.sin_port) << std::endl;
 
         inet_pton(AF_INET, parts[0].c_str(), &addr.sin_addr);
 
         auto ip_addr = addr.sin_addr.s_addr;
-        printf("Radio address %d.%d.%d.%d:%d\n",
-               0xff & ip_addr,
-               0xff & (ip_addr >> 8),
-               0xff & (ip_addr >> 16),
-               ip_addr >> 24,
-               addr.sin_port);
+        printf("Radio address %s:%d\n", inet_ntoa(addr.sin_addr), ntohs(addr.sin_port));
 
         //try to connect to radio check that the address is valid and that the waveform names do not conflict.
         //this does not work, just hope that you get ok values...
