@@ -1,0 +1,32 @@
+Source: gr-flex6k
+Section: libdevel
+Priority: optional
+Maintainer: FlexRadio Systems Software Engineering <software@flex-radio.com>
+Build-Depends: cmake,
+               debhelper (>= 12~),
+               dh-python,
+               doxygen,
+               gnuradio-dev,
+               libboost-filesystem-dev,
+               libboost-system-dev,
+               liborc-0.4-dev,
+               pkg-config,
+               python3,
+               python3-mako,
+               python3-six,
+               swig,
+               libwaveform-dev,
+               libevent-dev
+Standards-Version: 4.5.0
+Homepage:  https://www.flex-radio.com
+Vcs-Git: https://github.com/flexradio/gr-flex6k.git
+Vcs-Browser: https://github.com/flexradio/gr-flex6k
+
+Package: gr-flex6k
+Architecture: any
+Depends: ${misc:Depends}, ${python3:Depends}, ${shlibs:Depends}
+Description: gnuradio interface module for FlexRadio Systems FLEX-6000 Series
+ This is a placeholder.
+ .
+ Placeholder here too
+
