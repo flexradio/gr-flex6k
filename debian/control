@@ -3,10 +3,10 @@ Section: libdevel
 Priority: optional
 Maintainer: FlexRadio Systems Software Engineering <software@flex-radio.com>
 Build-Depends: cmake,
-               debhelper (>= 12~),
+               debhelper (>= 11),
                dh-python,
                doxygen,
-               gnuradio-dev,
+               gnuradio-dev (<< 3.9),
                libboost-filesystem-dev,
                libboost-system-dev,
                liborc-0.4-dev,
@@ -24,7 +24,8 @@ Vcs-Browser: https://github.com/flexradio/gr-flex6k
 
 Package: gr-flex6k
 Architecture: any
-Depends: ${misc:Depends}, ${python3:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${python3:Depends}, ${shlibs:Depends}, libgnuradio-runtime (<< 3.9),
+         libgnuradio-pmt (<< 3.9)
 Description: gnuradio interface module for FlexRadio Systems FLEX-6000 Series
  This is a placeholder.
  .

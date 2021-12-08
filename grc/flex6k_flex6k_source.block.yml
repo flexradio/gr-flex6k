@@ -1,6 +1,7 @@
 id: flex6k_flex6k_source
 label: flex6k_source
 category: '[flex6k]'
+flags: throttle
 
 templates:
   imports: import flex6k
@@ -15,17 +16,17 @@ parameters:
 - id: waveform_long_name
   label: waveform_long_name
   dtype: string
-  default: "LPI Receiver"
+  default: "GNU Radio Reciever"
   optional: false
 - id: waveform_short_name
   label: waveform_short_name
   dtype: string
-  default: "LPIR"
+  default: "GNUR"
   optional: false
 - id: address
   label: IP Address and Port
   dtype: string
-  default: "0.0.0.0:32787"
+  default: "0.0.0.0:4992"
   optional: true
 - id: swapIQ
   label: swap I and Q channels

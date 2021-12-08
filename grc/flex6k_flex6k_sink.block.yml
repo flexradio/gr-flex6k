@@ -27,7 +27,7 @@ parameters:
 - id: address
   label: IP Address and Port
   dtype: string
-  default: "0.0.0.0:32787"
+  default: "0.0.0.0:4992"
   # optional: 1
 
 
