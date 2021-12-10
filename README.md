@@ -1,4 +1,4 @@
-#GNU Radio Blocks for the FLEX-6000 Waveform API
+# GNU Radio Blocks for the FLEX-6000 Waveform API
 
 This module implements various blocks to talk to the FlexRadio Systems FLEX-6000 series of radios via the Waveform API.  The successfully build and run this software, you will need to compile and install the Waveform API at [https://github.com/flexradio/waveform-sdk](https://github.com/flexradio/waveform-sdk).
 
