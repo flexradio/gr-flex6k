@@ -1,14 +1,26 @@
-/**
- * @file flex_status_tree.h $
- * @brief base interface for flex radio
- * @author nlong
- *
- * $Revision: LPI-LPD-Development_nlong/3 $
- * $Date: 2021/08/03 15:34:31 $
- * $LastEditedBy: nlong $
- *
- * $Copyright: ©2018-2021 by Southwest Research Institute®; all rights reserved $
- **************************************************************************/
+// SPDX-License-Identifier: LGPL-3.0-or-later
+/// @file flex_status_tree.h $ 
+/// @author nlong
+///
+/// $Revision: LPI-LPD-Development_nlong/8 $
+/// $Date: 2021/08/03 15:34:31 $
+/// $LastEditedBy: nlong $
+///
+/// @copyright: (c) 2018-2021 by Southwest Research Institute®
+///
+/// This program is free software: you can redistribute it and/or modify
+/// it under the terms of the GNU Lesser General Public License as published by
+/// the Free Software Foundation, version 3.
+///
+/// This program is distributed in the hope that it will be useful, but
+/// WITHOUT ANY WARRANTY; without even the implied warranty of
+/// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+/// Lesser General Public License for more details.
+///
+/// You should have received a copy of the GNU Lesser General Public License
+/// along with this program. If not, see <http://www.gnu.org/licenses/>.
+///
+
 
 /**
  * $Log: flex_status_tree.h $

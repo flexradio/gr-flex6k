@@ -1,17 +1,15 @@
-title: The FLEX6K OOT Module
-brief: Short description of gr-flex6k
-tags: # Tags are arbitrary, but look at CGRAN what other authors are using
+title: The FLEX-6000 Waveform API Module
+brief: This module provides blocks for accessing the FLEX-6000 series radios over the Waveform API
+tags:
   - sdr
 author:
-  - Author Name <authors@email.address>
+  - FlexRadio Software Engineering <software@flex-radio.com>
 copyright_owner:
-  - Copyright Owner 1
-license:
-gr_supported_version: # Put a comma separated list of supported GR versions here
-#repo: # Put the URL of the repository here, or leave blank for default
-#website: <module_website> # If you have a separate project website, put it here
-#icon: <icon_url> # Put a URL to a square image here that will be used as an icon on CGRAN
+  - FlexRadio Systems
+  - Southwest Research Institute
+license: LGPL 3.0
+gr_supported_version: 3.8
+repo: https://github.com/flexradio/gr-flex6k.git
+website: https://flexradio.com
 ---
-A longer, multi-line description of gr-flex6k.
-You may use some *basic* Markdown here.
-If left empty, it will try to find a README file instead.
+Note that this block requires the FlexRadio Waveform API Library available at https://github.com/flexradio/waveform-sdk
